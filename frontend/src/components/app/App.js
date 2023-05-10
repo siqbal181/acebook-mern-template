@@ -3,7 +3,7 @@ import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
 import React, { useState } from 'react';
 import Feed from '../feed/Feed'
-import Home from '../components/Home';
+import Home from '../home/Home';
 import {
   useNavigate,
   Routes,

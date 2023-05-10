@@ -1,7 +1,7 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import SignUp from './components/SignUp';
-import Login from './components/Login';
+import { Link, BrowserRouter as Router, Route } from 'react-router-dom';
+import LoginForm from '../../auth/LoginForm';
+import SignUpForm from '../../user/SignUpForm';
 
 const Home = () => {
   return (
@@ -18,12 +18,11 @@ const Home = () => {
             </li>
           </ul>
         </nav>
-        <Route path="/signup" component={SignUp} />
-        <Route path="/login" component={Login} />
+        <Route path="/signup" component={SignUpForm} />
+        <Route path="/login" component={LoginForm} />
       </Router>
     </div>
   );
 }
-
 
 export default Home;
