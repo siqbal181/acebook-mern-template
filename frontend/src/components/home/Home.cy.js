@@ -1,8 +1,9 @@
-import Home from './Home';
-
-describe('Home page', () => {
-  it('displays a welcome message', () => {
+describe('Home', () => {
+  beforeEach(() => {
     cy.visit('/')
-    cy.contains('Welcome to Acebook')
+  })
+
+  it('renders the component', () => {
+    cy.get('h1').should('contain', 'Welcome to Acebook')
   })
 })
