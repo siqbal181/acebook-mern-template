@@ -1,7 +1,8 @@
-import Home from './Home'
+import Home from './Home';
 
-describe("Home", () => {
-  it('shows a welcome message', () => {
-    
+describe('Home page', () => {
+  it('displays a welcome message', () => {
+    cy.visit('/')
+    cy.contains('Welcome to Acebook')
   })
 })
