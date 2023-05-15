@@ -5,6 +5,7 @@ import ProtectedRoute from '../protectedRoute/ProtectedRoute'
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
 import Feed from '../feed/Feed'
+import UserProfile from '../profile/Profile'
 import {
   useNavigate,
   Routes,
@@ -13,7 +14,7 @@ import {
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 
 const App = () => {
-  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken} = useContext(AuthenticationContext)
+  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId} = useContext(AuthenticationContext)
   return (
     <div>    
       <div className="container">
@@ -23,6 +24,8 @@ const App = () => {
             {isLoggedIn ? 
               <>
                 <li>Hello {username}</li>
+                <UserProfile />
+                <li><Link to={`/profile/${userId}`}>Profile</Link></li>
                 <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>logout</Link> </li>
               </> : 
               <>
