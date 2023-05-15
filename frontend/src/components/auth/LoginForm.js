@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 
-const LogInForm = ({ navigate }) => {
+const LogInForm = ({ navigate, userId }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken} = useContext(AuthenticationContext)
@@ -19,10 +19,10 @@ const LogInForm = ({ navigate }) => {
     })
 
     if(response.status !== 201) {
-      console.log("yay")
+      console.log("oop")
       navigate('/login')
     } else {
-      console.log("oop")
+      console.log("yay")
       let data = await response.json()
       setIsLoggedIn(true)
 
@@ -30,6 +30,7 @@ const LogInForm = ({ navigate }) => {
       setUsername(localUsername)
 
       setToken(data.token)
+      userId(data.id)
       navigate('/posts');
     }
   }
