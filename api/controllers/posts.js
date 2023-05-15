@@ -25,11 +25,7 @@ const PostsController = {
     });
   },
   UpdateLikeCount: async (req, res) => {
-    console.log(req);
     const { id } = req.params
-    console.log(id)
-    console.log(req.params)
-
     // checking if the ID is a valid Mongoose type
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(404).json({error: "not valid ID"})

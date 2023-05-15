@@ -22,7 +22,6 @@ const UsersController = {
   },
   GetUserById: async (req, res) => {
     const { id } = req.params;
-    console.log(req.params);
     try {
       const user = await User.findById(id);
       if (!user) {
