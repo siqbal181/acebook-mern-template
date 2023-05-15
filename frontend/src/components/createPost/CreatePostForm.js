@@ -36,8 +36,8 @@ const CreatePostForm = ({ onCreated }) => {
   }
 
   const handleImageChange = (event) => {
-    console.log(event.target.file[0])
-    setImageUrl(event.target.file[0])
+    console.log(event.target.files[0])
+    setImageUrl(event.target.files[0])
   }
 
     return (
