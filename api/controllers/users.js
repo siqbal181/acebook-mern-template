@@ -20,15 +20,20 @@ const UsersController = {
       res.status(200).json({ username: user.username, message: "Found user" });
     });
   },
-  GetUserById: (req, res) => {
-    const id = req.params.id;
-    User.findById(id, async (err, user) => {
-      if (err) {
-        throw err;
+  GetUserById: async (req, res) => {
+    const { id } = req.params;
+    console.log(req.params);
+    try {
+      const user = await User.findById(id);
+      if (!user) {
+        return res.status(404).json({ message: "User not found" });
       }
-      res.status(200).json({ message: "User found by ID", user: user.username, email: user.email });
-    });
+      res.status(200).json({ username: user.username, email: user.email, message: "Found user" });
+    } catch (err) {
+      console.log(err);
+      res.status(500).json({ message: "Server error" });
+    }
   }
-};
-
+}
+  
 module.exports = UsersController;
