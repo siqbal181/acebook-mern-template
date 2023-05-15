@@ -19,6 +19,15 @@ const UsersController = {
       }
       res.status(200).json({ username: user.username, message: "Found user" });
     });
+  },
+  GetUserById: (req, res) => {
+    const id = req.params.id;
+    User.findById(id, async (err, user) => {
+      if (err) {
+        throw err;
+      }
+      res.status(200).json({ message: "User found by ID", user: user.username, email: user.email });
+    });
   }
 };
 
