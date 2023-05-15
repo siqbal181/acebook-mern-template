@@ -1,8 +1,7 @@
 import { AuthenticationContext } from '../authenticationProvider/AuthenticationProvider';
 import { useState, useContext, useEffect } from "react";
-import LoginForm from '../auth/LoginForm';
 
-const UserProfile = ({ userId, userName }) => {
+const UserProfile = ({ userId }) => {
   const [user, setUser] = useState("");
   const { token } = useContext(AuthenticationContext);
 
@@ -20,7 +19,7 @@ const UserProfile = ({ userId, userName }) => {
 
   useEffect(() => {
     findUserProfile();
-  }, []);
+  }, [userId, token]);
 
   return (
     <div className="profile">

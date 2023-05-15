@@ -1,9 +1,11 @@
 import React, { useState, useContext } from 'react';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
+import UserProfile from '../profile/Profile';
 
-const LogInForm = ({ navigate, userId }) => {
+const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState(null);
   const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken} = useContext(AuthenticationContext);
 
 
@@ -30,7 +32,7 @@ const LogInForm = ({ navigate, userId }) => {
       setUsername(localUsername)
 
       setToken(data.token)
-      userId = data.id
+      setUserId(data.id)
       navigate('/posts');
     }
   }
