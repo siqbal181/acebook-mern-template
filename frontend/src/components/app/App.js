@@ -24,7 +24,6 @@ const App = () => {
             {isLoggedIn ? 
               <>
                 <li>Hello {username}</li>
-                <UserProfile />
                 <li><Link to={`/profile/${userId}`}>Profile</Link></li>
                 <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>logout</Link> </li>
               </> : 
@@ -44,6 +43,7 @@ const App = () => {
         }/>
         <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
         <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
+        <Route path='/profile/:userId' element={<UserProfile />} />
         <Route path='*' element={<Navigate to='/login' />} />
       </Routes>
     </div>
