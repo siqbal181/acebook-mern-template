@@ -26,7 +26,7 @@ const CreatePostForm = ({ onCreated }) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
-      body: JSON.stringify({ message: message, author: username, imageUrl: `./public/image/${imagePath}`})
+      body: JSON.stringify({ message: message, author: username, imageUrl: `/images/${imagePath}`})
     })
 
     setMessage("")

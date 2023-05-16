@@ -3,10 +3,10 @@ const Post = require("../models/post");
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
-    callback(null, '../public/images'); // specify the directory where uploaded files will be stored
+    callback(null, '../frontend/public/images'); // specify the directory where uploaded files will be stored
   },
   filename: (req, file, callback) => {
-    callback(null, file.originalname); // use the original file name as the new file name
+    callback(null, file.originalname.replace(/\s+/g, '-')); // use the original file name as the new file name
   }
 });
 

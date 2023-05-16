@@ -4,16 +4,19 @@ import './Post.css'; // import the CSS file
 import CreateCommentForm from "../commentForm/CommentForm";
 
 const Post = ({ post, onCreated }) => {
-
+  console.log(post)
   const handleCommentCreated = () => {
     onCreated();
   };
 
-  if (post.message !== "") { // Quickfix to remove empty submits
+  if (post.message !== "" || post.imageUrl !== "") { // Quickfix to remove empty submits
     return (
 
       <article data-cy="post" className="post" key={post._id}>
         <p className="message">{post.message}</p>
+        <div className="image-box">
+            <img src={post.imageUrl} width="100%" height="100%"/>
+        </div>
         <Like postId={post._id} likesCount={post.likeCount}/>
         <div className="comments-container">
             <CreateCommentForm postId={post._id} onCreated={handleCommentCreated} />
