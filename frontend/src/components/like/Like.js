@@ -27,7 +27,7 @@ const Like = ( { postId, liked } ) => {
   return (
     <div>
     <button onClick={handleLikeClick}> 
-      LIKE
+      {likedBy.includes(username) ? "DISLIKE" : "LIKE"}
     </button>
     <p>{likeCount} likes</p> {/* use the likeCount state variable */}
     <p>liked by: {likedBy.join(', ')}</p>
