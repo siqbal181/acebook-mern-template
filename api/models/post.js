@@ -5,8 +5,8 @@ const PostSchema = new mongoose.Schema({
   dateCreated: { type: Date, default: Date.now },
   comments: [{ type: String }],
   likeCount: {type: Number, default: 0 },
-  author: { type: String }
-
+  author: { type: String },
+  imageUrl: { type: String }
 });
 
 const Post = mongoose.model("Post", PostSchema);
