@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useState, useContext } from "react";
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 
-const Like = ( { postId, liked } ) => {
+const Like = ( { postId, liked, author } ) => {
 
   const [likeCount, setLikeCount] = useState(liked.length); // declare likeCount before initializing it
   const [likedBy, setLikedBy] = useState(liked);
@@ -26,11 +26,10 @@ const Like = ( { postId, liked } ) => {
 
   return (
     <div>
-    <button onClick={handleLikeClick}> 
+    <button onClick={handleLikeClick} disabled={author==username}> 
       {likedBy.includes(username) ? "DISLIKE" : "LIKE"}
     </button>
-    <p>{likeCount} likes</p> {/* use the likeCount state variable */}
-    <p>liked by: {likedBy.join(', ')}</p>
+    <p>{likeCount} likes by: {likedBy.join(', ')}</p>
   </div>
   )
 }
