@@ -18,7 +18,7 @@ const Like = ( { postId, likesCount } ) => {
     })
     const data = await response.json();
     console.log(data)
-    setLikeCount(data.post.likeCount);
+    setLikeCount(data.post.likedBy.length);
   }
 
   return (
