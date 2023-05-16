@@ -37,6 +37,19 @@ const PostsController = {
     const token = await TokenGenerator.jsonwebtoken(req.user_id);
     // 201 for sending data
     res.status(201).json({ message: "OK", post: post})
+  },
+  GetPostsByUser: async (req, res) => {
+    try {
+      const { username } = req.params;
+      const posts = await Post.find({ author: username })
+        .sort({ dateCreated: -1 })
+        .exec();
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ posts });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
   }
 }
 
