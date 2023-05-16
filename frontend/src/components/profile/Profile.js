@@ -2,7 +2,7 @@ import { AuthenticationContext } from '../authenticationProvider/AuthenticationP
 import { useState, useContext, useEffect } from "react";
 
 const UserProfile = ({ }) => {
-  const [user, setUser] = useState("");
+  const [username, setUsername] = useState("");
   const { token, userId } = useContext(AuthenticationContext);
 
   const findUserProfile = async () => {
@@ -14,7 +14,7 @@ const UserProfile = ({ }) => {
       },
     });
     const data = await response.json();
-    setUser(data);
+    setUsername(data.username);
   };
 
   useEffect(() => {
@@ -23,7 +23,7 @@ const UserProfile = ({ }) => {
 
   return (
     <div className="profile">
-      <p>Hello</p>
+      <p>Hello {username}!</p>
     </div>
   );
 };
