@@ -22,4 +22,8 @@ describe('Like component', () => {
     })
   });
 
+  // it('disabled like button if you are the author', () => {
+  //   cy.mount(<Post post={fakePost} />);
+  // })
+
 });
