@@ -6,14 +6,13 @@ article {
   border-radius: 0.5rem;
   max-width: 30rem;
   margin: 1rem auto;
+  position: relative;
 }
 
 article.post {
-
   border: 1px solid #ccc;
   padding: 1rem;
   border-radius: 0.5rem;
-  
 }
 
 .comments-container {
@@ -36,15 +35,13 @@ p {
   padding: 10px;
   
   position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: right;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    max-width: 30rem;
-    margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 30rem;
+  margin: 1rem auto;
   }
 
 .show_author {

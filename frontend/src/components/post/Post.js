@@ -14,16 +14,16 @@ const Post = ({ post, onCreated }) => {
 
       <article data-cy="post" className="post" key={post._id}>
         <p className="message">{post.message}</p>
-        <p class="show_author">Posted by: {post.author}</p>
         <Like postId={post._id} likesCount={post.likeCount}/>
         <div className="comments-container">
             <CreateCommentForm postId={post._id} onCreated={handleCommentCreated} />
           <div className="comments">
             {post.comments.map((comment) => (
               <p>{comment}</p>
-            ))}
+              ))}
           </div>
         </div>
+          <p class="show_author">Posted by: {post.author}</p>
       </article>
     );
   }
