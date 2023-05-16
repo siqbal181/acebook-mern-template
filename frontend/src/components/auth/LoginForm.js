@@ -5,8 +5,7 @@ import UserProfile from '../profile/Profile';
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [userId, setUserId] = useState(null);
-  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken} = useContext(AuthenticationContext);
+  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId} = useContext(AuthenticationContext);
 
 
   const handleSubmit = async (event) => {

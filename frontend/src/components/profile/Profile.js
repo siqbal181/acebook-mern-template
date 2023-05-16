@@ -1,12 +1,12 @@
 import { AuthenticationContext } from '../authenticationProvider/AuthenticationProvider';
 import { useState, useContext, useEffect } from "react";
 
-const UserProfile = ({ userId }) => {
+const UserProfile = ({ }) => {
   const [user, setUser] = useState("");
-  const { token } = useContext(AuthenticationContext);
+  const { token, userId } = useContext(AuthenticationContext);
 
   const findUserProfile = async () => {
-    let response = await fetch(`profile/${userId}`, {
+    let response = await fetch(`/profile/${userId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
@@ -23,6 +23,7 @@ const UserProfile = ({ userId }) => {
 
   return (
     <div className="profile">
+      <p>Hello</p>
     </div>
   );
 };
