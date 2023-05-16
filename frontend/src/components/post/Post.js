@@ -15,7 +15,7 @@ const Post = ({ post, onCreated }) => {
       <article data-cy="post" className="post" key={post._id}>
         <p className="message">{post.message}</p>
         <div className="image-box">
-            <img src={post.imageUrl} width="100%" height="100%"/>
+            <img data-cy="img" src={post.imageUrl} width="100%" height="100%"/>
         </div>
         <Like postId={post._id} likesCount={post.likeCount}/>
         <div className="comments-container">
