@@ -14,6 +14,7 @@ const UserProfile = ({ }) => {
       },
     });
     const data = await response.json();
+    console.log(data);
     setUsername(data.username);
   };
 
@@ -22,7 +23,7 @@ const UserProfile = ({ }) => {
   }, [userId, token]);
 
   return (
-    <div className="profile">
+    <div className="profile" data-cy='userProfile'>
       <p>Hello {username}!</p>
     </div>
   );
