@@ -166,4 +166,26 @@ describe("/posts", () => {
       expect(response.body.token).toEqual(undefined);
     });
   });
+
+
+  describe("POST, when token is present", () => {
+    test("responds with a 201", async () => {
+      let response = await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ imageUrl: "test/image.png", token: token });
+      expect(response.status).toEqual(201);
+    });
+
+    test("creates a new post with image", async () => {
+      await request(app)
+        .post("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ imageUrl: "test/image.png", token: token });
+      let posts = await Post.find();
+      expect(posts.length).toEqual(1);
+      expect(posts[0].imageUrl).toEqual("test/image.png");
+    });
+  });
+
 });
