@@ -1,6 +1,7 @@
 import Post from '../post/Post';
 import React from 'react';
 import Like from './Like';
+import { AuthenticationContext } from '../authenticationProvider/AuthenticationProvider'
 
 describe('Like component', () => {
   it('shows like button', () => {
@@ -11,7 +12,8 @@ describe('Like component', () => {
   });
 
   it('likes a post', () => {
-    const fakePost = {comments: [],
+    const fakePost = {
+      comments: [],
       _id: "1",
       message: "Hello, world",
       author: "Sam",
@@ -38,8 +40,24 @@ describe('Like component', () => {
     })
   });
 
-  // it('disabled like button if you are the author', () => {
-  //   cy.mount(<Post post={fakePost} />);
-  // })
+
+  it('disabled like button if you are the author', () => {
+    const username = "Sam"
+    const fakePost = {
+      comments: [],
+      _id: "1",
+      message: "Hello, world",
+      author: "Sam",
+      likedBy: ["Bob","Jerry"],
+      dateCreated: "2023-05-16T15:00:49.799Z",
+    }
+    cy.mount(
+      <AuthenticationContext.Provider value={{username}}>
+        <Post post={fakePost} />
+      </AuthenticationContext.Provider>
+    )
+
+    cy.get('button').should('be.disabled');
+  })
 
 });

@@ -18,6 +18,7 @@
     "build": "react-scripts build",
     "test": "npm run test:unit && npm run test:feature",
     "test:unit": "cypress run --component",
+    "test:single": "cypress run --component --spec",
     "test:feature": "cypress run",
     "eject": "react-scripts eject"
   },
