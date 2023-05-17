@@ -23,10 +23,10 @@ const Like = ( { postId, liked, author } ) => {
 
   return (
     <div className="like" >
-      <button className="like-button" onClick={handleLikeClick} disabled={author==username}> 
-        {likedBy.includes(username) ? "DISLIKE" : "LIKE"}
+      <button className="like-button" onClick={handleLikeClick} disabled={author===username}> 
+        {likedBy.includes(username) ? "Dislike" : "Like"}
       </button>
-      <p>{likedBy.length} likes by: {likedBy.join(', ')}</p>
+      <p>{likedBy ? `${likedBy.length} likes by: ${likedBy.join(', ')}` : "0 likes"}</p>
     </div>
   )
 }
