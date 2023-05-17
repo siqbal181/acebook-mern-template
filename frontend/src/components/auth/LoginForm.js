@@ -1,12 +1,13 @@
 import React, { useState, useContext } from 'react';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
+import UserProfile from '../profile/Profile';
 import './LoginForm.css'
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const { setIsLoggedIn, setUsername, setToken} = useContext(AuthenticationContext)
 
+  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId} = useContext(AuthenticationContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -20,10 +21,10 @@ const LogInForm = ({ navigate }) => {
     })
 
     if(response.status !== 201) {
-      console.log("yay")
+      console.log("oop")
       navigate('/login')
     } else {
-      console.log("oop")
+      console.log("yay")
       let data = await response.json()
       setIsLoggedIn(true)
 
@@ -31,6 +32,7 @@ const LogInForm = ({ navigate }) => {
       setUsername(localUsername)
 
       setToken(data.token)
+      setUserId(data.id)
       navigate('/posts');
     }
   }

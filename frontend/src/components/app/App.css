@@ -52,3 +52,57 @@ li:hover {
   background-color: #ffa500;
 }
 
+/* User Profile CSS */
+.profile {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.user-welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.user-post-container {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.user-posts-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-post {
+  margin-bottom: 10px;
+}
+
+/* Like Button CSS */
+.fa-thumbs-up {
+  color: green;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.fa-thumbs-down {
+  color: red;
+  background-color: transparent;
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+.button-main {
+  padding: 0;
+  border: none;
+  background: none;
+}
+
+

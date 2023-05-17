@@ -8,6 +8,7 @@ const postsRouter = require("./routes/posts");
 const tokensRouter = require("./routes/tokens");
 const usersRouter = require("./routes/users");
 const commentsRouter = require("./routes/comments");
+const profileRouter = require("./routes/profile");
 
 const app = express();
 
@@ -41,6 +42,7 @@ const tokenChecker = (req, res, next) => {
 
 // route setup
 app.use("/posts", tokenChecker, postsRouter);
+app.use("/profile", profileRouter);
 app.use("/tokens", tokensRouter);
 app.use("/users", usersRouter);
 app.use("/comments", commentsRouter);

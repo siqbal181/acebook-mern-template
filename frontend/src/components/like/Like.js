@@ -1,7 +1,6 @@
 import React from "react";
 import { useState, useContext } from "react";
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
-import './Like.css'
 
 const Like = ( { postId, liked, author } ) => {
   const [likedBy, setLikedBy] = useState(liked);
@@ -22,12 +21,16 @@ const Like = ( { postId, liked, author } ) => {
   }
 
   return (
-    <div className="like" >
-      <button className="like-button" onClick={handleLikeClick} disabled={author===username}> 
-        {likedBy.includes(username) ? "Dislike" : "Like"}
-      </button>
-      <p>{likedBy ? `${likedBy.length} likes by: ${likedBy.join(', ')}` : "0 likes"}</p>
-    </div>
+    <div>
+    <button onClick={handleLikeClick} disabled={author==username} className="button-main"> 
+      {likedBy.includes(username) ? (
+      <i className="fas fa-thumbs-down"></i> 
+      ) : (
+      <i className="fas fa-thumbs-up"></i>
+    )}
+    </button>
+    <p>{likedBy.length} likes by: {likedBy.join(', ')}</p>
+  </div>
   )
 }
 
