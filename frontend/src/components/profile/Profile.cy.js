@@ -24,17 +24,17 @@ describe("UserProfile", () => {
     }).as("getPostsByUser");
 
     const token = "token"
+    const username = "someone"
     const setToken = () => {}
     cy.mount(
-      <AuthenticationContext.Provider value={{ token, setToken }}>
-        <UserProfile navigate={navigate} />
+      <AuthenticationContext.Provider value={{ token, setToken, username }}>
+        <UserProfile />
       </AuthenticationContext.Provider>
     );
 
     cy.wait("@getPostsByUser").then(() => {
       cy.get('[data-cy="userProfile"]')
-        .should('contain.text', "Hello, someone")
-        .and('contain.text', 'Hello world')
+        .should('contain.text', "Hello someone!Here are your posts:Hello, world")
     });
   });
 });
