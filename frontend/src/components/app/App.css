@@ -70,12 +70,21 @@
 .fa-thumbs-up {
   color: green;
   background-color: transparent;
+  padding: 0;
   border: none;
+  background: none;
 }
 
 .fa-thumbs-down {
   color: red;
   background-color: transparent;
+  padding: 0;
   border: none;
+  background: none;
 }
 
+.button-main {
+  padding: 0;
+  border: none;
+  background: none;
+}

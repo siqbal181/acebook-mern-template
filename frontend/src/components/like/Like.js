@@ -22,7 +22,7 @@ const Like = ( { postId, liked, author } ) => {
 
   return (
     <div>
-    <button onClick={handleLikeClick} disabled={author==username}> 
+    <button onClick={handleLikeClick} disabled={author==username} className="button-main"> 
       {likedBy.includes(username) ? (
       <i className="fas fa-thumbs-down"></i> 
       ) : (
