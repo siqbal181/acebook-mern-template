@@ -30,13 +30,12 @@ const UserProfile = () => {
 
   return (
     <div className="profile" data-cy='userProfile'>
-      <p>Hello {username}!</p>
-      <div id='userposts' role="userposts">
-        {console.log(postData)}
-        <p>Here are your posts:</p>
+      <p className="user-welcome-message">Hello, {username}!</p>
+      <div id='userposts' role="userposts" className="user-post-container">
+        <p className="user-posts-heading">Here are your posts:</p>
         {postData.length > 0 ? (
           postData.map((post) => (
-            <p key={post._id}>{post.message}</p>
+            <p key={post._id} className="user-post">{post.message}</p>
           ))
         ) : (
           <p>No posts found.</p>
@@ -45,5 +44,4 @@ const UserProfile = () => {
     </div>
   );
 };
-
 export default UserProfile;

@@ -35,3 +35,32 @@
   background-color: #333;
   color: #fff;
 }
+
+.profile {
+  background-color: #f1f1f1;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.user-welcome-message {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 10px auto;
+}
+
+.user-post-container {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  margin-top: 20px;
+}
+
+.user-posts-heading {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.user-post {
+  margin-bottom: 10px;
+}
