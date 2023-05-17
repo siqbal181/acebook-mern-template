@@ -11,16 +11,15 @@ const Post = ({ post, onCreated }) => {
 
   if (post.message !== "") { // Quickfix to remove empty submits
     return (
-
-      <article data-cy="post" className="post" key={post._id}>
-        <p className="message">{post.message}</p>
-        <p class="show_author">Posted by: {post.author}</p>
+      <article className="post-form" data-cy="post" key={post._id}>
+        <p className="post-message">{post.message}</p>
+        <p className="post-show_author">Posted by: {post.author}</p>
         <Like postId={post._id} liked={post.likedBy} author={post.author}/>
-        <div className="comments-container">
+          <div className="post-comments-container">
             <CreateCommentForm postId={post._id} onCreated={handleCommentCreated} />
-          <div className="comments">
+          <div className="post-comments">
             {post.comments.map((comment) => (
-              <p>{comment}</p>
+              <p class="comment"> {comment}</p>
             ))}
           </div>
         </div>

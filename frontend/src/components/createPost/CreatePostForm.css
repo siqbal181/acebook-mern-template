@@ -1,0 +1,19 @@
+.create-post-form {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 10px;
+    background-color: #ffffff;
+    border: 1px solid #e6e6e6;
+  }
+  
+.create-post-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+    font-family: Helvetica, sans-serif;
+    font-size: 16px;
+    background-color: #ececec;
+    color: #616161;
+    border: none;
+    border-radius: 4px;
+  }

@@ -2,6 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import Post from '../post/Post';
 import CreatePostForm from '../createPost/CreatePostForm';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
+import './Feed.css'
 
 const Feed = ({ navigate }) => {
   const {token, setToken} = useContext(AuthenticationContext)
@@ -35,7 +36,6 @@ const Feed = ({ navigate }) => {
       return(
         <>
         <div class="feed-container">
-          <h2>Posts</h2>
           <CreatePostForm onCreated={() => setRefresh(true)}/> 
           <div id='feed' role="feed">
               {posts.map(

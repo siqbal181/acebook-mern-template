@@ -1,4 +1,4 @@
-.signup-form {
+.login-form {
     max-width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -6,12 +6,12 @@
     background-color: #f5f5f5;
   }
   
-.signup-form h1 {
+  .login-form h1 {
     font-size: 24px;
     font-weight: bold;
   }
-
-.signup-input {
+  
+  .login-input {
     display: block;
     width: 100%;
     padding: 10px;
@@ -20,8 +20,8 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-
-.submit-button {
+  
+  .submit-button {
     display: block;
     padding: 10px 20px;
     font-size: 18px;
@@ -34,7 +34,7 @@
     cursor: pointer;
     transition: background-color 0.3s ease;
   }
-
-.submit-button:hover {
+  
+  .submit-button:hover {
     background-color: #ffa500;
   }
