@@ -6,7 +6,7 @@
     border: 1px solid #e6e6e6;
   }
 
-  .post-message {
+.post-message {
     margin-top: 5px;
     margin-bottom: 5px;
     border-top: 0.5px solid #ff8c00;
@@ -14,14 +14,14 @@
     padding: 10px;
   }
   
-  .post-show_author {
+.post-show_author {
     margin-top: 2.5px;
     margin-bottom: 10px;
     font-size: 12px;
     font-weight: bold;
   }
 
-  .comment {
+.comment {
     margin-top: 1px;
     margin-bottom: 1px;
     width: 100%;

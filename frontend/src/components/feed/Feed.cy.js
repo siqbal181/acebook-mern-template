@@ -3,20 +3,23 @@ import { AuthenticationContext } from '../authenticationProvider/AuthenticationP
 const navigate = () => {}
 
 describe("Feed", () => {
-  const fakePost1 = {comments: [],
-    _id: "1",
-    message: "Hello, world",
-    author: "Sam",
-    dateCreated: "2023-05-16T15:00:49.799Z",
-  }
-  const fakePost2 = {
-    comments: [],
-    _id: "2",
-    message: "Hello again, world",
-    author: "Bob",
-    dateCreated: "2023-05-16T15:00:49.799Z",
-  }
   it("Calls the /posts endpoint and lists all the posts", () => {
+    const fakePost1 = {
+      comments: [],
+      _id: "1",
+      message: "Hello, world",
+      author: "Sam",
+      likedBy: [],
+      dateCreated: "2023-05-16T15:00:49.799Z",
+    }
+    const fakePost2 = {
+      comments: [],
+      _id: "2",
+      message: "Hello again, world",
+      author: "Bob",
+      likedBy: ["Jimmy"],
+      dateCreated: "2023-05-16T15:00:49.799Z",
+    }
     cy.intercept('GET', '/posts', (req) => {
       req.reply({
         statusCode: 200,

@@ -3,10 +3,9 @@ import { useState, useContext } from "react";
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 import './Like.css'
 
-const Like = ( { postId, likesCount } ) => {
-
-  const [likeCount, setLikeCount] = useState(likesCount); // declare likeCount before initializing it
-  const {token, setToken} = useContext(AuthenticationContext)
+const Like = ( { postId, liked, author } ) => {
+  const [likedBy, setLikedBy] = useState(liked);
+  const {token, username} = useContext(AuthenticationContext);
 
   const handleLikeClick = async () => {
 
@@ -16,16 +15,18 @@ const Like = ( { postId, likesCount } ) => {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`
       },
+      body: JSON.stringify({ username: username})
     })
     const data = await response.json();
-    console.log(data)
-    setLikeCount(data.post.likedBy.length);
+    setLikedBy(data.post.likedBy)
   }
 
   return (
-    <div className="like" > 
-      <button className="like-button" onClick={handleLikeClick}>Like</button>
-      <p>{likeCount} likes</p> {/* use the likeCount state variable */}
+    <div className="like" >
+      <button className="like-button" onClick={handleLikeClick} disabled={author==username}> 
+        {likedBy.includes(username) ? "DISLIKE" : "LIKE"}
+      </button>
+      <p>{likedBy.length} likes by: {likedBy.join(', ')}</p>
     </div>
   )
 }
