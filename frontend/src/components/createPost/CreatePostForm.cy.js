@@ -1,5 +1,4 @@
 import CreatePostForm from './CreatePostForm'
-const navigate = () => {}
 
 describe("Making a post", () => {
   it("calls the /posts endpoint", () => {
