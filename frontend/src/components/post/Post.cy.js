@@ -16,19 +16,21 @@ describe("Post", () => {
   })
 
   it('renders a post with an image', () => {
-    cy.mount(<Post post={{ _id: 1, imageUrl: "/test/image.png" }} />);
+
+    fakePost1.imageUrl = "/test/image.png"
+    cy.mount(<Post post={fakePost1} />);
     cy.get('[data-cy="img"]').should('have.attr', 'src', '/test/image.png');
   });
   
   it('doesn\'t render on an empty post', () => {
-    cy.mount(<Post post={{message: ""}} />);
+    cy.mount(<Post post={{message: "", imageUrl: ""}} />);
     cy.get('[data-cy="post"]').should('not.exist')
   })
 
   it('displays comments', () => {
     fakePost1.comments = ["Wow, great post", "I've seen better posts bro"]
     cy.mount(<Post post={fakePost1} />);
-    cy.get('.comments').should('contain.text', "Wow, great post")
+    cy.get('.post-comments').should('contain.text', "Wow, great post")
     .and('contain.text', "I've seen better posts");
   })
   
