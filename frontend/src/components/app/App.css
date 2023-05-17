@@ -36,6 +36,7 @@
   color: #fff;
 }
 
+/* User Profile CSS */
 .profile {
   background-color: #f1f1f1;
   padding: 10px 20px;
@@ -64,3 +65,17 @@
 .user-post {
   margin-bottom: 10px;
 }
+
+/* Like Button CSS */
+.fa-thumbs-up {
+  color: green;
+  background-color: transparent;
+  border: none;
+}
+
+.fa-thumbs-down {
+  color: red;
+  background-color: transparent;
+  border: none;
+}
+
