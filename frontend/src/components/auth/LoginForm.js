@@ -4,7 +4,7 @@ import {AuthenticationContext} from '../authenticationProvider/AuthenticationPro
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken} = useContext(AuthenticationContext)
+  const { setIsLoggedIn, setUsername, setToken} = useContext(AuthenticationContext)
 
 
   const handleSubmit = async (event) => {

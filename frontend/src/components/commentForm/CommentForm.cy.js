@@ -1,6 +1,5 @@
 import CreateCommentForm from "./CommentForm"
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
-const navigate = () => {}
 
 describe("Making a comment", () => {
   it("calls the /posts endpoint", () => {
