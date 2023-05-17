@@ -33,7 +33,6 @@ describe("Post model", () => {
         expect(err).toBeNull();
 
         expect(posts[0]).toMatchObject({ message: "some message" });
-        expect(posts[0]).toMatchObject({ likeCount: 0 });
         done();
       });
     });

@@ -26,23 +26,24 @@ const PostsController = {
     });
   },
 
-  UpdateLikeCount: async (req, res) => {
-    console.log(req);
-    const { id } = req.params
-    console.log(id)
-    console.log(req.params)
+  LikeByUser: async (req, res) => {
+    const { id } = req.params;
+    const username = req.body.username;
 
-    // checking if the ID is a valid Mongoose type
-    if (!mongoose.Types.ObjectId.isValid(id)) {
-      return res.status(404).json({error: "not valid ID"})
+    const findPost = await Post.findOne({_id: id})
+  
+    if (findPost.likedBy.includes(username)) {
+      const post = await Post.findOneAndUpdate({_id: id},
+        { $pull: { likedBy: username }},
+        { new: true }).exec()
+        res.status(201).json({ message: "OK", post: post})
     }
-
-    const post = await Post.findOneAndUpdate({_id: id},
-      { $inc: { likeCount: 1} },
-      { new: true }).exec()
-    const token = await TokenGenerator.jsonwebtoken(req.user_id);
-    // 201 for sending data
-    res.status(201).json({ message: "OK", post: post})
+    else {
+      const post = await Post.findOneAndUpdate({_id: id},
+        { $push: { likedBy: username }},
+        { new: true }).exec()
+        res.status(201).json({ message: "OK", post: post})
+    }
   }
 }
 

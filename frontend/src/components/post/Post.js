@@ -17,7 +17,8 @@ const Post = ({ post, onCreated }) => {
         <div className="image-box">
             <img data-cy="img" src={post.imageUrl} width="100%" height="100%"/>
         </div>
-        <Like postId={post._id} likesCount={post.likeCount}/>
+        <p class="show_author">Posted by: {post.author}</p>
+        <Like postId={post._id} liked={post.likedBy} author={post.author}/>
         <div className="comments-container">
             <CreateCommentForm postId={post._id} onCreated={handleCommentCreated} />
           <div className="comments">
