@@ -2,21 +2,9 @@ import { AuthenticationContext } from '../authenticationProvider/AuthenticationP
 import { useState, useContext, useEffect } from "react";
 
 const UserProfile = () => {
-  const [username, setUsername] = useState("");
   const [postData, setPostData] = useState([]); 
-  const { token, userId } = useContext(AuthenticationContext);
+  const { token, username } = useContext(AuthenticationContext);
 
-  const findUserProfile = async () => {
-    let response = await fetch(`/profile/${userId}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-    });
-    const data = await response.json();
-    setUsername(data.username);
-  };
 
   const getPostsByUser = async () => {
     try {
@@ -26,23 +14,23 @@ const UserProfile = () => {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-      });
-      const postData = await response.json();
-      setPostData(postData); // Update the state with the retrieved posts
+      })
+        .then(response => response.json())
+        .then(async data => {
+          setPostData(data.posts)
+        });
     } catch (error) {
       console.error(error);
     }
   };
 
   useEffect(() => {
-    findUserProfile();
     getPostsByUser();
-  }, [userId, token, username]); 
+  }, []); 
 
   return (
     <div className="profile" data-cy='userProfile'>
       <p>Hello {username}!</p>
-      {console.log(postData)};
       <div id='userposts' role="userposts">
         <p>Here are your posts:</p>
         {postData.length > 0 ? (
