@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 import './CommentForm.css';
 
 const CreateCommentForm = ({ onCreated, postId }) => {
   const [comment, setComment] = useState("");
-  const [token, setToken] = useState(window.localStorage.getItem("token"));
+  const {token} = useContext(AuthenticationContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -26,9 +27,9 @@ const CreateCommentForm = ({ onCreated, postId }) => {
   }
 
     return (
-      <form onSubmit={handleSubmit} id="commentForm" className="comment-form">
-        <textarea rows="2" cols="50" placeholder='Add a comment...' id="comment" value={ comment } onChange={handleCommentChange} form="commentForm"/>
-        <input role='submit-button' id='submit-comment' type="submit" value="Comment" />
+      <form className="comment-form" onSubmit={handleSubmit} id="commentForm">
+        <textarea className="comment-input" rows="2" cols="50" placeholder='Add a comment...' id="comment" value={ comment } onChange={handleCommentChange} form="commentForm"/>
+        <input class="submit-button" role='submit-button' id='submit-comment' type="submit" value="Comment" />
       </form>
     );
 }

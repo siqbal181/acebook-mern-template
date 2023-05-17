@@ -11,7 +11,6 @@ const Post = ({ post, onCreated }) => {
 
   if (post.message !== "" || post.imageUrl !== "") { // Quickfix to remove empty submits
     return (
-
       <article data-cy="post" className="post" key={post._id}>
         <p className="message">{post.message}</p>
         <div className="image-box">
@@ -19,12 +18,13 @@ const Post = ({ post, onCreated }) => {
         </div>
         <p class="show_author">Posted by: {post.author}</p>
         <Like postId={post._id} liked={post.likedBy} author={post.author}/>
-        <div className="comments-container">
+          <div className="post-comments-container">
             <CreateCommentForm postId={post._id} onCreated={handleCommentCreated} />
-          <div className="comments">
+          <div className="post-comments">
             {post.comments.map((comment) => (
-              <p>{comment}</p>
-              ))}
+
+              <p class="comment"> {comment}</p>
+            ))}
           </div>
         </div>
           <p class="show_author">Posted by: {post.author}</p>
