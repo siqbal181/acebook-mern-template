@@ -18,24 +18,22 @@ const App = () => {
   const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId} = useContext(AuthenticationContext)
   return (
     <div>    
-      <div className="container">
-        <nav className="navbar">
+      <nav className="navbar">
+        <ul className="navbar-nav">
           <div className="navbar-brand">Welcome To Acebook</div>
-          <ul className="navbar-nav">
-            {isLoggedIn ? 
-              <>
-                <li>Hello {username}</li>
-                <li><Link to={`/profile/${userId}`}>Profile</Link></li>
-                <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>logout</Link> </li>
-              </> : 
-              <>
-                <li><Link to="/signup">Sign Up</Link></li>
-                <li><Link to="/login">Login</Link></li>
-              </>
-            }
-          </ul>
-        </nav>
-      </div>
+          {isLoggedIn ? 
+            <>
+              <li>Hello {username}</li>
+              <li><Link to={`/profile/${userId}`}>Profile</Link></li>
+              <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>logout</Link> </li>
+            </> : 
+            <>
+              <li><Link to="/signup">Sign Up</Link></li>
+              <li><Link to="/login">Login</Link></li>
+            </>
+          }
+        </ul>
+      </nav>
       <Routes>
         <Route path='/posts'  element={
           <ProtectedRoute>

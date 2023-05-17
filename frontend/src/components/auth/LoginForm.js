@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 import UserProfile from '../profile/Profile';
+import './LoginForm.css'
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -52,14 +53,14 @@ const LogInForm = ({ navigate }) => {
     return response.username;
   }
 
-    return (
-      <form onSubmit={handleSubmit}>
-        <h1>Log In</h1>
-        <input placeholder='Email' id="email" type='text' value={ email } onChange={handleEmailChange} />
-        <input placeholder='Password' id="password" type='password' value={ password } onChange={handlePasswordChange} />
-        <input role='submit-button' id='submit' type="submit" value="Submit" />
-      </form>
-    );
+  return (
+    <form className="login-form" onSubmit={handleSubmit}>
+      <h1>Log In</h1>
+      <input className="login-input" placeholder='Email' id="email" type='text' value={email} onChange={handleEmailChange} />
+      <input className="login-input" placeholder='Password' id="password" type='password' value={password} onChange={handlePasswordChange} />
+      <input className="submit-button" role='submit-button' id='submit' type="submit" value="Submit" />
+    </form>
+  );
 }
 
 export default LogInForm;

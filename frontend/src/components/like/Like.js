@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useContext } from "react";
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
+import './Like.css'
 
 const Like = ( { postId, liked, author } ) => {
   const [likedBy, setLikedBy] = useState(liked);
