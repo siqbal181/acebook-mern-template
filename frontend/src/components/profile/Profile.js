@@ -32,6 +32,7 @@ const UserProfile = () => {
     <div className="profile" data-cy='userProfile'>
       <p>Hello {username}!</p>
       <div id='userposts' role="userposts">
+        {console.log(postData)}
         <p>Here are your posts:</p>
         {postData.length > 0 ? (
           postData.map((post) => (

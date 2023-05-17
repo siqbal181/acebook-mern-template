@@ -1,27 +1,40 @@
 import UserProfile from './Profile';
 import React from 'react';
 import { AuthenticationContext } from '../authenticationProvider/AuthenticationProvider';
+const navigate = () => {}
 
 describe("UserProfile", () => {
   it("Renders the user profile and shows welcome username message", () => {
-    const token = "token";
-    const setToken = () => {};
-    const navigate = () => {};
+    const fakePost1 = {
+      comments: [],
+      _id: "1",
+      message: "Hello, world",
+      author: "Sam",
+      likedBy: [],
+      dateCreated: "2023-05-16T15:00:49.799Z",
+    }
+
+    cy.intercept('GET', '/posts/someone', (req) => {
+      req.reply({
+        statusCode: 200,
+        body: { posts: [
+          fakePost1
+        ] }
+      });
+    }).as("getPostsByUser");
+
+    const token = "token"
+    const setToken = () => {}
     cy.mount(
       <AuthenticationContext.Provider value={{ token, setToken }}>
         <UserProfile navigate={navigate} />
       </AuthenticationContext.Provider>
     );
-    cy.intercept('GET', '/profile/123', (req) => {
-      req.reply({
-        statusCode: 200,
-        body: { username: 'someone', email: 'someone@example.com', message: 'Found user' }
-      });
-    }).as("findUserProfile");
 
-    cy.wait("@findUserProfile").then(() => {
+    cy.wait("@getPostsByUser").then(() => {
       cy.get('[data-cy="userProfile"]')
-        .should('contain.text', "Hello, someone");
+        .should('contain.text', "Hello, someone")
+        .and('contain.text', 'Hello world')
     });
   });
 });
