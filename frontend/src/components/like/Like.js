@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useState, useContext } from "react";
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
+import './Like.css'
 
 const Like = ( { postId, likesCount } ) => {
 
@@ -22,12 +23,10 @@ const Like = ( { postId, likesCount } ) => {
   }
 
   return (
-    <div>
-    <button onClick={handleLikeClick}> 
-      LIKE
-    </button>
-    <p>{likeCount} likes</p> {/* use the likeCount state variable */}
-  </div>
+    <div className="like" > 
+      <button className="like-button" onClick={handleLikeClick}>Like</button>
+      <p>{likeCount} likes</p> {/* use the likeCount state variable */}
+    </div>
   )
 }
 
