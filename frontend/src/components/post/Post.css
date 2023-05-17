@@ -1,4 +1,5 @@
 article {
+  position: relative;
   display: flex;
   flex-direction: column;
   border: px solid #ccc;
@@ -36,21 +37,24 @@ p {
   padding: 10px;
   
   position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: right;
-    justify-content: right;
-    border: 1px solid #ccc;
-    padding: 1rem;
-    border-radius: 0.5rem;
-    max-width: 30rem;
-    margin: 1rem auto;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: right;
+  border: 1px solid #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  max-width: 30rem;
+  margin: 1rem auto;
+}
 
 .show_author {
+  padding: 1vh;
+  margin: 0;
   font-size: small;
   color: gray;
   position: absolute;
-  right: 1vh;
+  right: 0;
   bottom: 0;
+  border: 0;
 }
