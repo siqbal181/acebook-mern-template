@@ -26,25 +26,42 @@ const PostsController = {
     });
   },
 
+  GetPostsByUser: async (req, res) => {
+    try {
+      const { username } = req.params;
+      const posts = await Post.find({ author: username })
+        .sort({ dateCreated: -1 })
+        .exec();
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ posts });
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: "Internal Server Error" });
+    }
+  },
   LikeByUser: async (req, res) => {
     const { id } = req.params;
     const username = req.body.username;
 
-    const findPost = await Post.findOne({_id: id})
-  
+    const findPost = await Post.findOne({ _id: id });
+
     if (findPost.likedBy.includes(username)) {
-      const post = await Post.findOneAndUpdate({_id: id},
-        { $pull: { likedBy: username }},
-        { new: true }).exec()
-        res.status(201).json({ message: "OK", post: post})
-    }
-    else {
-      const post = await Post.findOneAndUpdate({_id: id},
-        { $push: { likedBy: username }},
-        { new: true }).exec()
-        res.status(201).json({ message: "OK", post: post})
+      const post = await Post.findOneAndUpdate(
+        { _id: id },
+        { $pull: { likedBy: username } },
+        { new: true }
+      ).exec();
+      res.status(201).json({ message: "OK", post: post });
+    } else {
+      const post = await Post.findOneAndUpdate(
+        { _id: id },
+        { $push: { likedBy: username } },
+        { new: true }
+      ).exec();
+      res.status(201).json({ message: "OK", post: post });
     }
   }
-}
+};
 
 module.exports = PostsController;
+

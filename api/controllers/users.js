@@ -19,7 +19,7 @@ const UsersController = {
       }
       res.status(200).json({ username: user.username, message: "Found user" });
     });
-  }
-};
-
+  },
+}
+  
 module.exports = UsersController;
