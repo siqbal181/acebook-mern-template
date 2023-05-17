@@ -4,7 +4,7 @@ import Like from './Like';
 
 describe('Like component', () => {
   it('shows like button', () => {
-    cy.mount(<Like postId={1} likesCount={1} />);
+    cy.mount(<Like postId={1} liked={["Jimmy"]} author={"Bob"} />);
     cy.get('button').click(); // select the like button and click it
 
     cy.get('button').should('have.text', 'LIKE'); // assert that the button now shows the updated like count
@@ -18,7 +18,8 @@ describe('Like component', () => {
       likedBy: ["Bob","Jerry"],
       dateCreated: "2023-05-16T15:00:49.799Z",
     }
-    cy.mount(<Like postId={1} likesCount={1} />);
+
+    cy.mount(<Like postId={1} liked={["Bob"]} author={"Sam"} />)
     
     cy.intercept('PATCH', '/posts/1', (req) => {
       req.reply({
@@ -27,12 +28,18 @@ describe('Like component', () => {
       })
     }
     ).as("UpdateLikeCount")
+
     cy.get('button').click(); // select the like button and click it
 
-    cy.wait('@UpdateLikeCount').then( interception => {
-      expect(interception.response.body.message).to.eq("OK")
-      expect(interception.response.body.post.likedBy.length).to.eq(2)
+    cy.wait("@UpdateLikeCount").then(() =>{
+      cy.get('p')
+      .should('contain.text', "Bob")
+      .and('contain.text', "Jerry")
     })
   });
+
+  // it('disabled like button if you are the author', () => {
+  //   cy.mount(<Post post={fakePost} />);
+  // })
 
 });
