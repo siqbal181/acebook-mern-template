@@ -4,6 +4,7 @@ import Like from './Like';
 import { AuthenticationContext } from '../authenticationProvider/AuthenticationProvider'
 
 describe('Like component', () => {
+
   it('shows like button', () => {
     cy.mount(<Like postId={1} liked={["Jimmy"]} author={"Bob"} />);
     cy.get('button').click(); // select the like button and click it
