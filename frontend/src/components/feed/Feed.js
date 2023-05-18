@@ -35,7 +35,7 @@ const Feed = ({ navigate }) => {
     if(token) {
       return(
         <>
-        <div class="feed-container">
+        <div className="feed-container">
           <CreatePostForm onCreated={() => setRefresh(true)}/> 
           <div id='feed' role="feed">
               {posts.map(
