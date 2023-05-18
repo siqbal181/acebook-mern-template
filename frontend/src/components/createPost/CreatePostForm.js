@@ -31,7 +31,7 @@ const CreatePostForm = ({ onCreated }) => {
       <form className="create-post-form" onSubmit={handleSubmit} id="postForm">
         <h1 className="make-post-title">Make a post</h1>
         <textarea className="create-post-input" rows="4" cols="50" placeholder='Write your post here...' id="message" value={ message } onChange={handleMessageChange} form="postForm"/>
-        <input className="submit-button" role='submit-button' id='submit' type="submit" value="Submit" />
+        <input className="submit-button" role='submit-button' id='submit' type="submit" value="Submit" disabled={message==""}/>
       </form>
       </>
     );
