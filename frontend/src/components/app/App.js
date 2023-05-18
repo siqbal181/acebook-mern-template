@@ -25,6 +25,7 @@ const App = () => {
           {isLoggedIn ? 
             <>
               <li>Hello {username}</li>
+              <li><Link to="/posts">Feed</Link></li>
               <li><Link to={`/profile/${userId}`}>Profile</Link></li>
               <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>Logout</Link></li>
             </> : 
@@ -38,12 +39,16 @@ const App = () => {
       <Routes>
         <Route path='/posts'  element={
           <ProtectedRoute>
-            <Feed navigate={ useNavigate() }/>
+            <Feed/>
           </ProtectedRoute>
         }/>
         <Route path='/login'  element={<LoginForm  navigate={ useNavigate() }/>}/>
         <Route path='/signup' element={<SignUpForm navigate={ useNavigate() }/>}/>
-        <Route path='/profile/:userId' element={<UserProfile />} />
+        <Route path='/profile/:userId' element={
+          <ProtectedRoute>
+            <UserProfile />
+          </ProtectedRoute>
+        } />
         <Route path='*' element={<Navigate to='/login' />} />
       </Routes>
     </div>

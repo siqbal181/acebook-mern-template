@@ -27,9 +27,9 @@ const CreateCommentForm = ({ onCreated, postId }) => {
   }
 
     return (
-      <form className="comment-form" onSubmit={handleSubmit} id="commentForm">
+      <form className="comment-form" onSubmit={handleSubmit} id="commentForm" >
         <textarea className="comment-input" rows="2" cols="50" placeholder='Add a comment...' id="comment" value={ comment } onChange={handleCommentChange} form="commentForm"/>
-        <input class="submit-button" role='submit-button' id='submit-comment' type="submit" value="Comment" />
+        <input class="submit-button" role='submit-button' id='submit-comment' type="submit" value="Comment" disabled={(comment=="")}/>
       </form>
     );
 }
