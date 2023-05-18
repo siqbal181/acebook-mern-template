@@ -4,6 +4,7 @@ require("../mongodb_helper");
 const Post = require("../../models/post");
 const User = require("../../models/user");
 const JWT = require("jsonwebtoken");
+const { post } = require("superagent");
 const secret = process.env.JWT_SECRET;
 
 let token;
@@ -188,4 +189,74 @@ describe("/posts", () => {
     });
   });
 
+  describe("GET, when token is present", () => {
+    test("find by author", async () => {
+      let post1 = new Post({ message: "howdy!", dateCreated: "2023-05-10T20:51:59.427Z", author: "toppy"});
+      let post2 = new Post({ message: "hola!", dateCreated: "2023-05-10T22:51:59.427Z", author: "mat"});
+      
+      await post1.save();
+      await post2.save();
+
+      let response = await request(app)
+        .get("/posts")
+        .set("Authorization", `Bearer ${token}`)
+        .send({ token: token });
+
+      const posts = await Post.find({ author: 'toppy' });
+      
+      expect(posts[0].author).toEqual("toppy");
+    });
+  });
+
+  describe("LikeByUser", () => {
+    test("should add or remove username from likedBy array depending on its presence", async () => {
+
+      const post = new Post({ message: "hola!", likedBy: ["toppy"], dateCreated: "2023-05-10T22:51:59.427Z", author: "mat"});
+      
+      await post.save();
+  
+      const postId = post._id;
+      const username = "mat";
+  
+      const response = await request(app)
+        .patch(`/posts/${postId}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ username: username, token: token });
+      
+      console.log(response)
+      // Check the response status and body
+      expect(response.status).toBe(201);
+      expect(response.body.message).toBe("OK");
+      expect(response.body.post).toBeDefined();
+  
+      const updatedPost = response.body.post;
+
+      expect(updatedPost.likedBy).toContain(username);
+    });
+
+    test("likedBy array depending on its presence", async () => {
+
+      const post = new Post({ message: "hola!", likedBy: ["toppy"], dateCreated: "2023-05-10T22:51:59.427Z", author: "mat"});
+      
+      await post.save();
+  
+      const postId = post._id;
+      const username = "toppy";
+  
+      const response = await request(app)
+        .patch(`/posts/${postId}`)
+        .set("Authorization", `Bearer ${token}`)
+        .send({ username: username, token: token });
+      
+      console.log(response)
+      // Check the response status and body
+      expect(response.status).toBe(201);
+      expect(response.body.message).toBe("OK");
+      expect(response.body.post).toBeDefined();
+  
+      const updatedPost = response.body.post;
+
+      expect(updatedPost.likedBy).not.toContain(username);
+    });
+  });
 });
