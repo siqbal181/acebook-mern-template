@@ -15,3 +15,18 @@
     border: none;
     border-radius: 4px;
   }
+
+  #commentForm .submit-button {
+    background-color: #525252; 
+    color: #fff; 
+    padding: 5px 5px; 
+    border: none; 
+    border-radius: 4px;
+    cursor: pointer; 
+    font-size: 12px;
+  }
+
+  #commentForm .submit-button:hover {
+    background-color: #ffa500;
+  }
+  

@@ -19,13 +19,13 @@ const App = () => {
   return (
     <div>    
       <nav className="navbar">
+        <div className="navbar-brand">Welcome To Acebook</div>
         <ul className="navbar-nav">
-          <div className="navbar-brand">Welcome To Acebook</div>
           {isLoggedIn ? 
             <>
               <li>Hello {username}</li>
               <li><Link to={`/profile/${userId}`}>Profile</Link></li>
-              <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>logout</Link> </li>
+              <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>Logout</Link></li>
             </> : 
             <>
               <li><Link to="/signup">Sign Up</Link></li>
