@@ -13,9 +13,11 @@ const Post = ({ post, onCreated }) => {
     return (
       <article className="post-form" data-cy="post" key={post._id}>
         <p className="post-message">{post.message}</p>
-        <div className="image-box">
-            <img data-cy="img" src={post.imageUrl} width="100%" height="100%"/>
-        </div>
+        {post.imageUrl !== "/images/null" && (
+           <div className="image-box">
+            <img data-cy="img" src={post.imageUrl} width="100%" height="100%" />
+           </div>
+        )} 
         <p className="post-show_author">Posted by: {post.author}</p>
         <Like postId={post._id} liked={post.likedBy} author={post.author}/>
           <div className="post-comments-container">
