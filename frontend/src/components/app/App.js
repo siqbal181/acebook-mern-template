@@ -25,6 +25,7 @@ const App = () => {
           {isLoggedIn ? 
             <>
               <li>Hello {username}</li>
+              <li><Link to={`/posts/`}>Home</Link></li>
               <li><Link to={`/profile/${userId}`}>Profile</Link></li>
               <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>Logout</Link></li>
             </> : 
