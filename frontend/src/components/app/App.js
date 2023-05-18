@@ -2,11 +2,12 @@ import './App.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 import LoginForm from '../auth/LoginForm'
 import SignUpForm from '../user/SignUpForm'
+import UserProfile from '../profile/Profile'
+import Feed from '../feed/Feed'
 import ProtectedRoute from '../protectedRoute/ProtectedRoute'
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
-import Feed from '../feed/Feed'
-import UserProfile from '../profile/Profile'
+
 import {
   useNavigate,
   Routes,
