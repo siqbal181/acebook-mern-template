@@ -1,21 +1,29 @@
 # Acebook - Team Earth
+
 <!-- TABLE OF CONTENTS -->
 ## Table of Contents
+
+------
 
 - [Table of Contents](#table-of-contents)
 - [Project Description](#project-description)
   - [Features](#features)
+  - [Card Wall](#card-wall)
   - [Technologies](#mern-stack-and-other-technologies)
-- [How to install](#how-to-install)
+- [How to run the project](#how-to-run=the-project)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [How to run tests](#start)
+  - [How to run tests](#how-to-run-tests)
     - [1. Backend](#the-backend-(API))
     - [2. Frontend](#the-frontend-(React))
 - [Team Earth](#team-earth)
 
+------
+
 <!-- ABOUT THE PROJECT -->
 ## Project Description
+
+------
 
 ![homepage preview](./path/to/homepage/screenshot/here.png)
 
@@ -23,11 +31,21 @@ Acebook is a MERN stack web application that emulates key features of Facebook. 
 
 Our task involved enhancing and expanding an existing application. We faced the challenge of familiarising ourselves with the inherited codebase while working to improve and extend it.
 
+------
+
+### Card Wall
+
+[Trello Board link](https://trello.com/b/d4FoJhDy/team-earth-board)
+
+------
+
 ### Features
 
 - **User Authentication**: Acebook can allow users to register, login and logout securely.
 - **User Profile**: Users can sign up and will have a Profile that shows their own posts.
 - **Posts**: Users can post messages and photos with other users. They can like and comment on other users' posts.
+
+------
 
 ### MERN STACK AND OTHER TECHNOLOGIES
 
@@ -46,14 +64,16 @@ additional tools:
 - [Multer](https://www.npmjs.com/package/multer) for handling multipart/form-data, to upload photos
 - [@fortawesome/fontawesome-free](https://github.com/FortAwesome/Font-Awesome)
 
-<!-- INSTALLATION -->
-## How to install
+------
 
-This section shows you how to set up this project locally. First, get a local copy up and running follow these simple steps.
+<!-- INSTALLATION -->
+## How to run the project
+
+------
 
 ### Prerequisites
 
-Before running the project, ensure thatyou have installed `mongodb`, `npm` and `node` in your local machine. If they are not installed, please follow the steps below.
+Before running the project, ensure that you have installed `mongodb`, `npm` and `node` in your local machine. If they are not installed, please follow the steps below.
 
 - npm
 
@@ -63,8 +83,6 @@ Before running the project, ensure thatyou have installed `mongodb`, `npm` and `
   ```
 
 - nvm & node
-
-<!-- visit <https://github.com/nvm-sh/nvm> for more information on how to install nvm -->
 
   ```bash
   brew install nvm
@@ -107,52 +125,54 @@ Before running the project, ensure thatyou have installed `mongodb`, `npm` and `
  <!-- TESTING -->
 ### How to run the tests
 
-#### The Backend (API)
+- #### The Backend (API)
 
-**Note the use of an environment variable for the JWT secret**
+   **Note the use of an environment variable for the JWT secret**
 
-Start the server in test mode (so that it connects to the test DB)
+   Start the server in test mode (so that it connects to the test DB)
 
-```bash
-; cd api
-; JWT_SECRET=SUPER_SECRET npm run start:test
-```
+   ```bash
+   ; cd api
+   ; JWT_SECRET=SUPER_SECRET npm run start:test
+   ```
 
-Then run the tests in a new terminal session
+   Then run the tests in a new terminal session
 
-```bash
-; cd api
-; JWT_SECRET=SUPER_SECRET npm run test
-```
+   ```bash
+   ; cd api
+   ; JWT_SECRET=SUPER_SECRET npm run test
+   ```
 
-#### The Frontend (React)
+- #### The Frontend (React)
 
-**Note the use of an environment variable for the JWT secret**
+   **Note the use of an environment variable for the JWT secret**
 
-  Start the server in test mode (so that it connects to the test DB)
+   Start the server in test mode (so that it connects to the test DB)
 
-  ```bash
-  ; cd api
-  ; JWT_SECRET=SUPER_SECRET npm run start:test
-  ```
+   ```bash
+   ; cd api
+   ; JWT_SECRET=SUPER_SECRET npm run start:test
+   ```
 
-  Then start the front end in a new terminal session
+   Then start the front end in a new terminal session
 
-  ```bash
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm start
-  ```
+   ```bash
+   ; cd frontend
+   ; JWT_SECRET=SUPER_SECRET npm start
+   ```
 
-  Then run the tests in a new terminal session
+   Then run the tests in a new terminal session
 
-  ```bash
-  ; cd frontend
-  ; JWT_SECRET=SUPER_SECRET npm run test
-  ```
+   ```bash
+   ; cd frontend
+   ; JWT_SECRET=SUPER_SECRET npm run test
+   ```
 
+------
 <!-- CONTRIBUTORS -->
 ## Team Earth
 
+------
 We are team `Earth`:
 
 <table>
