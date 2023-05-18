@@ -15,8 +15,15 @@ describe("Post", () => {
     cy.get('[data-cy="post"]').should('contain.text', "Hello, world")
   })
 
-  it('doens\'t render on an empty post', () => {
-    cy.mount(<Post post={{message: ""}} />);
+  it('renders a post with an image', () => {
+
+    fakePost1.imageUrl = "/test/image.png"
+    cy.mount(<Post post={fakePost1} />);
+    cy.get('[data-cy="img"]').should('have.attr', 'src', '/test/image.png');
+  });
+  
+  it('doesn\'t render on an empty post', () => {
+    cy.mount(<Post post={{message: "", imageUrl: ""}} />);
     cy.get('[data-cy="post"]').should('not.exist')
   })
 
