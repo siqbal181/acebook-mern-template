@@ -30,6 +30,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile" data-cy='userProfile'>
+      <img className="profile-pic" src="/images/default-profile-img.jpeg" />
       <p className="user-welcome-message">Hello, {username}!</p>
       <div id='userposts' role="userposts" className="user-post-container">
         <p className="user-posts-heading">Here are your posts:</p>
