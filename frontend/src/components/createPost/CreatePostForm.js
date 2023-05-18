@@ -48,7 +48,7 @@ const CreatePostForm = ({ onCreated }) => {
     return (
       <>
       <form className="create-post-form" onSubmit={handleSubmit} id="postForm">
-        <h1>Make a post</h1>
+        <h1 className="make-post-title">Make a post</h1>
         <textarea className="create-post-input" rows="4" cols="50" placeholder='Write your post here...' id="message" value={ message } onChange={handleMessageChange} form="postForm"/>
         <input className="create-post-image-input" type="file" name="image" onChange={handleImageChange} />
         <input className="submit-button" role='submit-button' id='submit' type="submit" value="Submit" />
