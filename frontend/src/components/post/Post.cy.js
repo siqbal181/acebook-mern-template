@@ -23,7 +23,7 @@ describe("Post", () => {
   it('displays comments', () => {
     fakePost1.comments = ["Wow, great post", "I've seen better posts bro"]
     cy.mount(<Post post={fakePost1} />);
-    cy.get('.comments').should('contain.text', "Wow, great post")
+    cy.get('.comment').should('contain.text', "Wow, great post")
     .and('contain.text', "I've seen better posts");
   })
   
