@@ -27,14 +27,15 @@ const PostsController = {
   },
 
   GetPostsByUser: async (req, res) => {
-    const { username } = req.params;
-    const posts = await Post.find({ author: username })
-      .sort({ dateCreated: -1 })
-      .exec();
-    const token = await TokenGenerator.jsonwebtoken(req.user_id);
-    res.status(200).json({ posts });
-    if (err) {
-      throw err;
+    try {
+      const { username } = req.params;
+      const posts = await Post.find({ author: username })
+        .sort({ dateCreated: -1 })
+        .exec();
+      const token = await TokenGenerator.jsonwebtoken(req.user_id);
+      res.status(200).json({ posts });
+    } catch (err) {
+      res.status(500).json({ error: "Internal Server Error" });
     }
   },
   

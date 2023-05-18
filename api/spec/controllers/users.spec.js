@@ -3,6 +3,7 @@ const request = require("supertest");
 require("../mongodb_helper");
 const User = require('../../models/user')
 
+
 describe("/users", () => {
   beforeEach( async () => {
     await User.deleteMany({});
@@ -59,4 +60,19 @@ describe("/users", () => {
       expect(users.length).toEqual(0)
     });
   })
-})
+
+  describe("GET, get user", () => {
+    test("finds user with email", async () => {
+      await request(app)
+        .post("/users")
+        .send({email: "scarlett@email.com", password: "1234", username: "username"})
+      
+      const email = "scarlett@email.com"
+
+      await request(app)
+        .get(`/users/${email}`)
+      let users = await User.find()
+      expect(users.length).toEqual(1)
+    });
+  });
+});

@@ -107,7 +107,6 @@ describe("/posts", () => {
         .get("/posts")
         .set("Authorization", `Bearer ${token}`)
         .send({ token: token });
-      console.log(response.body.posts);
       let messages = response.body.posts.map((post) => post.message);
       expect(messages).toEqual(["hola!", "howdy!"]);
     });
@@ -197,14 +196,17 @@ describe("/posts", () => {
       await post1.save();
       await post2.save();
 
+      const username = 'toppy';
+
       let response = await request(app)
-        .get("/posts")
+        .get(`/posts/${username}`)
         .set("Authorization", `Bearer ${token}`)
         .send({ token: token });
 
-      const posts = await Post.find({ author: 'toppy' });
-      
-      expect(posts[0].author).toEqual("toppy");
+      console.log(response.body)
+
+      expect(response.status).toBe(200);
+      expect(response.body.posts[0].author).toEqual("toppy");
     });
   });
 
@@ -223,8 +225,6 @@ describe("/posts", () => {
         .set("Authorization", `Bearer ${token}`)
         .send({ username: username, token: token });
       
-      console.log(response)
-      // Check the response status and body
       expect(response.status).toBe(201);
       expect(response.body.message).toBe("OK");
       expect(response.body.post).toBeDefined();
@@ -236,27 +236,26 @@ describe("/posts", () => {
 
     test("likedBy array depending on its presence", async () => {
 
-      const post = new Post({ message: "hola!", likedBy: ["toppy"], dateCreated: "2023-05-10T22:51:59.427Z", author: "mat"});
-      
-      await post.save();
-  
-      const postId = post._id;
-      const username = "toppy";
-  
-      const response = await request(app)
-        .patch(`/posts/${postId}`)
-        .set("Authorization", `Bearer ${token}`)
-        .send({ username: username, token: token });
-      
-      console.log(response)
-      // Check the response status and body
-      expect(response.status).toBe(201);
-      expect(response.body.message).toBe("OK");
-      expect(response.body.post).toBeDefined();
-  
-      const updatedPost = response.body.post;
+        const post = new Post({ message: "hola!", likedBy: ["toppy"], dateCreated: "2023-05-10T22:51:59.427Z", author: "mat"});
+        
+        await post.save();
+    
+        const postId = post._id;
+        const username = "toppy";
+    
+        const response = await request(app)
+          .patch(`/posts/${postId}`)
+          .set("Authorization", `Bearer ${token}`)
+          .send({ username: username, token: token });
 
-      expect(updatedPost.likedBy).not.toContain(username);
-    });
+        expect(response.status).toBe(201);
+        expect(response.body.message).toBe("OK");
+        expect(response.body.post).toBeDefined();
+    
+        const updatedPost = response.body.post;
+
+        expect(updatedPost.likedBy).not.toContain(username);
+      });
   });
+
 });

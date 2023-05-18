@@ -11,6 +11,7 @@ const UsersController = {
       }
     });
   },
+  
   GetUsername: (req, res) => {
     const email = (req.params.email);
     User.findOne({email: email}, async (err, user) => {
