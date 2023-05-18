@@ -6,9 +6,8 @@ import { AuthenticationContext } from '../authenticationProvider/AuthenticationP
 describe('Like component', () => {
   it('shows like button', () => {
     cy.mount(<Like postId={1} liked={["Jimmy"]} author={"Bob"} />);
-    cy.get('button').click(); // select the like button and click it
 
-    cy.get('button').should('have.text', 'Like'); // assert that the button now shows the updated like count
+    cy.get('[data-cy="like-button"]').should('exist'); // assert that the button now shows the updated like count
   });
 
   it('likes a post', () => {

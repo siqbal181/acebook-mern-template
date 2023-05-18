@@ -34,7 +34,7 @@ describe("UserProfile", () => {
 
     cy.wait("@getPostsByUser").then(() => {
       cy.get('[data-cy="userProfile"]')
-        .should('contain.text', "Hello someone!Here are your posts:Hello, world")
+        .should('contain.text', "Hello, someone!Here are your posts:Hello, world")
     });
   });
 });
