@@ -7,6 +7,7 @@ import Feed from '../feed/Feed'
 import ProtectedRoute from '../protectedRoute/ProtectedRoute'
 import React, { useContext } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import globe from "./globe.png";
 
 import {
   useNavigate,
@@ -21,10 +22,12 @@ const App = () => {
     <div>    
       <nav className="navbar">
         <div className="navbar-brand">Welcome To Acebook</div>
+        <img src={globe} alt="Transparent Globe" className="globe" />
         <ul className="navbar-nav">
           {isLoggedIn ? 
             <>
               <li>Hello {username}</li>
+              
               <li><Link to="/posts">Feed</Link></li>
               <li><Link to={`/profile/${userId}`}>Profile</Link></li>
               <li><Link to="/login" onClick={() => {setIsLoggedIn(false); setUsername(""); setToken("")}}>Logout</Link></li>
