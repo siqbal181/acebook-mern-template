@@ -2,6 +2,7 @@ import React, { useState, useContext } from 'react';
 import {AuthenticationContext} from '../authenticationProvider/AuthenticationProvider';
 import UserProfile from '../profile/Profile';
 import './LoginForm.css'
+import globe from "./globe.png";
 
 const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
@@ -55,6 +56,7 @@ const LogInForm = ({ navigate }) => {
 
   return (
     <form className="login-form" onSubmit={handleSubmit}>
+      <img src={globe} alt="Transparent Globe" className='globe' />
       <h1>Log In</h1>
       <input className="login-input" placeholder='Email' id="email" type='text' value={email} onChange={handleEmailChange} />
       <input className="login-input" placeholder='Password' id="password" type='password' value={password} onChange={handlePasswordChange} />

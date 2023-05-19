@@ -29,7 +29,7 @@ const Like = ( { postId, liked, author } ) => {
       <i className="fas fa-thumbs-up"></i>
     )}
     </button>
-    <p>{likedBy.length} likes by: {likedBy.join(', ')}</p>
+    {likedBy.length > 0 && <p>{likedBy.length} likes by: {likedBy.join(', ')}</p>}
   </div>
   )
 }
