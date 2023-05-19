@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 
 const UserProfile = () => {
   const [postData, setPostData] = useState([]); 
-  const { token, username } = useContext(AuthenticationContext);
+  const { token, username, userPic } = useContext(AuthenticationContext);
 
 
   const getPostsByUser = async () => {
@@ -30,7 +30,7 @@ const UserProfile = () => {
 
   return (
     <div className="profile" data-cy='userProfile'>
-      <img className="profile-pic" src="/images/default-profile-img.jpeg" />
+      <img className="profile-pic" src={userPic} />
       <p className="user-welcome-message">Hello, {username}!</p>
       <div id='userposts' role="userposts" className="user-post-container">
         <p className="user-posts-heading">Here are your posts:</p>

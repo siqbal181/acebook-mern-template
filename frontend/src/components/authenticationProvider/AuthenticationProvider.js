@@ -7,8 +7,9 @@ const AuthenticationProvider = ({ children }) => {
   const [username, setUsername] = useState("")
   const [token, setToken] = useState("")
   const [userId, setUserId] = useState("")
+  const [userPic, setUserPic] = useState("")
   return (
-    <AuthenticationContext.Provider value={{isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId}}>
+    <AuthenticationContext.Provider value={{isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId, userPic, setUserPic}}>
       {children}
     </AuthenticationContext.Provider>
   )

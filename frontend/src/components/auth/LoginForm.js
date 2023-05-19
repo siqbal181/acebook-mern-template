@@ -7,7 +7,7 @@ const LogInForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId} = useContext(AuthenticationContext);
+  const {isLoggedIn, setIsLoggedIn, username, setUsername, token, setToken, userId, setUserId, userPic, setUserPic} = useContext(AuthenticationContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -28,8 +28,14 @@ const LogInForm = ({ navigate }) => {
       let data = await response.json()
       setIsLoggedIn(true)
 
-      const localUsername = await getUsername(email)
-      setUsername(localUsername)
+      const localUser = await getUsername(email)
+      setUsername(localUser.username)
+
+      if (localUser.profilePic == '/images/null') {
+        setUserPic('/images/default-profile-img.jpeg')
+      } else {
+        setUserPic(localUser.profilePic)
+      }
 
       setToken(data.token)
       setUserId(data.id)
@@ -50,7 +56,7 @@ const LogInForm = ({ navigate }) => {
       method: 'get'
     }).then( (response) => response.json())
 
-    return response.username;
+    return response;
   }
 
   return (
