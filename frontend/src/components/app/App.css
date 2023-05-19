@@ -106,4 +106,13 @@
   padding: 0;
   border: none;
   background: none;
-}
+
+/* Background image */
+
+.globe {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0.5;
+  z-index: -3;
