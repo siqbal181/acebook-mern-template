@@ -25,7 +25,7 @@
 
 ------
 
-![homepage preview](./path/to/homepage/screenshot/here.png)
+![homepage preview](/public/images/main-homepage.png)
 
 Acebook is a MERN stack web application that emulates key features of Facebook. It allows users to create profiles, post messages and pictures, and react to others' content by liking or disliking and commenting on posts.
 
