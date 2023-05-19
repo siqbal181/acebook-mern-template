@@ -7,16 +7,26 @@ const SignUpForm = ({ navigate }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [username, setUsername] = useState(""); 
+  const [imagePath, setImage] = useState(null);
+  const [imageName, setImageName] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const formData = new FormData();
+    formData.append("image", imagePath);
+
+    const image = await fetch('/uploadPhotos', {
+      method: 'post',
+      body: formData, 
+    })
 
     fetch( '/users', {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ email: email, password: password, username: username })
+      body: JSON.stringify({ email: email, password: password, username: username, profilePic: `/images/${imageName}` })
     })
       .then(response => {
         if(response.status === 201) {
@@ -39,6 +49,11 @@ const SignUpForm = ({ navigate }) => {
     setUsername(event.target.value) 
   }
 
+  const handleImageChange = (event) => {
+    setImage(event.target.files[0])
+    setImageName(event.target.files[0].name.replace(/\s+/g, '-'))
+  }
+
 
     return (
       <form className="signup-form" onSubmit={handleSubmit}>
@@ -47,6 +62,7 @@ const SignUpForm = ({ navigate }) => {
           <input className="signup-input" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
           <input className="signup-input" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />
           <input className="signup-input" placeholder="Username" id="username" type='text' value={ username } onChange={handleUsernameChange} />
+          <input className="signup-input"  type="file" name="image" onChange={handleImageChange} />
           <input className="submit-button" id='submit' type="submit" value="Submit" />
       </form>
     );

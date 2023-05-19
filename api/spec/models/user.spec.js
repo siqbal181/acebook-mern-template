@@ -67,4 +67,24 @@ describe("User model", () => {
     });
     expect(user.username).toEqual("username");  
   });
+
+  it("has a default profilePic", () => { 
+    const user = new User({ 
+      email: "someone@example.com", 
+      password: "password", 
+      username: "username",
+      profilePic: "/images/default-profile-img.jpeg"
+    });
+    expect(user.profilePic).toEqual("/images/default-profile-img.jpeg");  
+  });
+
+  it("has a chosen profilePic", () => { 
+    const user = new User({ 
+      email: "someone@example.com", 
+      password: "password", 
+      username: "username",
+      profilePic: "/images/chosen-dp.jpeg"
+    });
+    expect(user.profilePic).toEqual("/images/chosen-dp.jpeg");  
+  });
 });

@@ -14,7 +14,7 @@
 .navbar-brand {
   font-size: 2rem;
   font-weight: bold;
-  color:#ffa500;
+  color: #ffa500;
 }
 
 .navbar-nav {
@@ -47,9 +47,19 @@
 
 /* User Profile CSS */
 .profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
   background-color: #f1f1f1;
   padding: 10px 20px;
   border-radius: 8px;
+}
+
+.profile-pic {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
 }
 
 .user-welcome-message {
@@ -96,7 +106,6 @@
   padding: 0;
   border: none;
   background: none;
-}
 
 /* Background image */
 
@@ -107,4 +116,3 @@
   width: 100%;
   opacity: 0.5;
   z-index: -3;
-}

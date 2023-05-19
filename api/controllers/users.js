@@ -17,7 +17,7 @@ const UsersController = {
       if (err) {
         throw err;
       }
-      res.status(200).json({ username: user.username, message: "Found user" });
+      res.status(200).json({ username: user.username, message: "Found user", profilePic: user.profilePic });
     });
   },
 }
