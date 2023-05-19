@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './SignUpForm.css';
+import globe from "./globe.png";
 
 const SignUpForm = ({ navigate }) => {
 
@@ -41,6 +42,7 @@ const SignUpForm = ({ navigate }) => {
 
     return (
       <form className="signup-form" onSubmit={handleSubmit}>
+        <img src={globe} alt="Transparent Globe" className='globe' />
         <h1>Sign Up</h1>
           <input className="signup-input" placeholder="Email" id="email" type='text' value={ email } onChange={handleEmailChange} />
           <input className="signup-input" placeholder="Password" id="password" type='password' value={ password } onChange={handlePasswordChange} />

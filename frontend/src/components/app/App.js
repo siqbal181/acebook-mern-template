@@ -22,7 +22,7 @@ const App = () => {
     <div>    
       <nav className="navbar">
         <div className="navbar-brand">Welcome To Acebook</div>
-        <img src={globe} alt="Transparent Globe" className="globe" />
+        {/* <img src={globe} alt="Transparent Globe" className='globe' /> */}
         <ul className="navbar-nav">
           {isLoggedIn ? 
             <>
