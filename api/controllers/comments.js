@@ -20,14 +20,7 @@ const CommentsController = {
 
     },
 
-    getCommentsByPostId: async (req, res) => {
-        const postId = req.params.postId;
-        const comments = await Comment.find({ postId });
 
-        console.log(comments);
-
-        res.json(comments);
-    }
-}
+};
 
 module.exports = CommentsController;

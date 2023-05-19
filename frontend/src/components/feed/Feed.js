@@ -32,7 +32,7 @@ const Feed = () => {
   }
   
   return(
-    <div class="feed-container">
+    <div className="feed-container">
       <CreatePostForm onCreated={handlePostCreated}/> 
       <div id='feed' role="feed">
         {posts.map(
